@@ -8,8 +8,4 @@ That app basically hook somes function in NanoRegistry.framework to make "Plugin
 # Support iOS 12.0 and later with watchOS 10.3.1 and even newer (upto watchOS 26).
 Hopefully version 1.1 can help download app from AppStore... I'm not tested yet.
 
-# watchOS 26 note
-`maxPairingCompatibilityVersion` is raised to 9999 so a watch on watchOS 26 passes the
-pairing compatibility check. After installing, do a full **reboot** (not just a respring) —
-the daemon that enforces the check (`nanoregistryd`) only re-reads the value on boot.
 Tested: Apple Watch on watchOS 26 paired to an iPhone on iOS 16.7.
