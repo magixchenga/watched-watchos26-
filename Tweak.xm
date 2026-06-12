@@ -31,8 +31,13 @@
     //first file
     NSString *firstPlistPath = @"/var/mobile/Library/Preferences/com.apple.NanoRegistry.plist";
     [tweak addNewItemsToPlistWithPath:firstPlistPath key:@"minPairingCompatibilityVersion" value:@(1)];
-    //if apple update more watchOS, set maxPairingCompatibilityVersion to higher number (example: 9.5.1 around 27 then +2 for each big version, now lastest is 10.3.1 then it's 35~37)
-    [tweak addNewItemsToPlistWithPath:firstPlistPath key:@"maxPairingCompatibilityVersion" value:@(37)];
+    //maxPairingCompatibilityVersion is an inclusive upper bound on the watch's
+    //internal NanoRegistry pairing-compatibility number (NOT the marketing watchOS
+    //version). Reference points: 9.5.1 ~= 27, 10.3.1 ~= 35-37. Setting a high ceiling
+    //(9999) covers watchOS 26 and future releases. Tested: an Apple Watch on watchOS 26
+    //pairs to an iPhone on iOS 16.7 with this set. A full REBOOT (not just a respring)
+    //is required so nanoregistryd re-reads the value.
+    [tweak addNewItemsToPlistWithPath:firstPlistPath key:@"maxPairingCompatibilityVersion" value:@(9999)];
     [tweak addNewItemsToPlistWithPath:firstPlistPath key:@"IOS_PAIRING_EOL_MIN_PAIRING_COMPATIBILITY_VERSION_CHIPIDS" value:@""];
     [tweak addNewItemsToPlistWithPath:firstPlistPath key:@"minPairingCompatibilityVersionWithChipID" value:@(1)];
 

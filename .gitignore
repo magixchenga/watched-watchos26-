@@ -1,0 +1,9 @@
+# Theos build output
+.theos/
+obj/
+
+# macOS
+.DS_Store
+
+# Build output (.deb packages)
+packages/
